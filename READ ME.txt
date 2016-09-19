@@ -1,0 +1,66 @@
+*********************************************************
+*	______ _____  ___ ______  ___  ___ _____ 	*
+*	| ___ \  ___|/ _ \|  _  \ |  \/  ||  ___|	*
+*	| |_/ / |__ / /_\ \ | | | | .  . || |__  	*
+*	|    /|  __||  _  | | | | | |\/| ||  __| 	*
+*	| |\ \| |___| | | | |/ /  | |  | || |___ 	*
+*	\_| \_\____/\_| |_/___/   \_|  |_/\____/ 	*
+*							*
+*********************************************************
+
+Assignment1
+SYSC 3303
+Jason Van Kerkhoven
+	[100974276]
+17/09/2016
+
+-----------------------------------------------------------
+CONTENTS:
+	Server.java		- 5.84KB
+	IntermediateHost.java	- 5.57KB
+	Client.java		- 5.64KB
+
+------------------------------------------------------------
+SET UP INSTRUCTIONS:
+	
+	1.	Load all files (Server.java, IntermediateHost.java,
+		Client.java) into Eclipse workspace/project
+	2.	Build project
+	3.	Run Server.java
+	4.	Run IntermediateHost.java
+	5.	Run Client.java
+
+
+	*Note that all three programs must be running concurently
+	for correct results*
+
+------------------------------------------------------------
+FILE INFORMATION:
+
+Server.java
+	Receives packet from IntermediateHost, proceeds to check
+	packet for validity (ie proper format, proper R/W byte).
+	If valid, generates and sends a packet to the IntermediateHost.
+	Note that the contents of the packet depend on if the R/W byte in
+	the received packet is set to read or write. If non-valid, the
+	server shuts down. Loops this process indefinitely.
+
+IntermediateHost.java
+	Receives packet from Client, sends packet to Server and waits
+	for Server response. Sends Server response back to Client. 
+	Repeats this process indefinantly. Designed to allow for the 
+	simulation of errors and lost packets in future.
+
+Client.java
+	Generates a datagram following the format of [0,R/W,STR1,0,STR2,0],
+	in which R/W signifies read (1) or write (2), STR1 is a filename,
+	and STR2 is the mode. Sends this datagram to the IntermediateHost
+	and waits for response from intermediateHost. Repeats this
+	process ten times, then sends a datagram packet that DOES NOT
+	follow the expected format stated above. Waits for response from
+	IntermediateHost. We DO NOT expect a response to the badly formated
+	packet.
+	
+
+	
+
